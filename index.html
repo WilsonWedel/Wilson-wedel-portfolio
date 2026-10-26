@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wilson Wedel – Mechanical Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{--paper:#E8EDF0;--card:#F6F8F9;--ink:#13202A;--mute:#4B5B66;--line:#13202A40;--accent:#2747F0;--on-accent:#fff;
+--head:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Source Serif 4",Georgia,"Times New Roman",serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0F1A22;--card:#16242E;--ink:#E6EDF1;--mute:#9DB0BC;--line:#E6EDF144;--accent:#8EA2FF;--on-accent:#0F1A22}}
+:root[data-theme="dark"]{--paper:#0F1A22;--card:#16242E;--ink:#E6EDF1;--mute:#9DB0BC;--line:#E6EDF144;--accent:#8EA2FF;--on-accent:#0F1A22}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.6 var(--body);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:30}
+h1,h2,h3{font-family:var(--head);line-height:1.05;margin:0;letter-spacing:-.02em}
+p{margin:0 0 1em;max-width:62ch}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+svg{display:block;width:100%;height:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--paper);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:20px;height:56px}
+nav b{font:800 18px var(--head);white-space:nowrap}
+nav ul{display:flex;gap:4px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
+nav a{display:block;padding:8px 12px;font:500 15px var(--head);color:var(--ink);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent}
+nav a:hover,nav a.on{border-bottom-color:var(--accent);color:var(--accent)}
+
+/* parallax layers */
+.clip{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.layer{position:absolute;will-change:transform;color:var(--accent)}
+.layer img{width:100%;height:100%;object-fit:cover}
+.bg{inset:-18% 0;opacity:.22}
+.fg{pointer-events:none;z-index:3}
+
+/* hero */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;z-index:2}
+.hero .wrap{position:relative;z-index:2;padding-top:72px;padding-bottom:120px}
+.hero h1{font-size:clamp(3rem,10vw,7.5rem);font-weight:800}
+.hero .role{font:500 clamp(1.1rem,2.5vw,1.6rem)/1.3 var(--head);margin:18px 0 20px;color:var(--accent)}
+.hero p{font-size:1.2rem;color:var(--mute)}
+.hero .fg{right:-6%;bottom:-120px;width:min(52vw,560px);aspect-ratio:1;opacity:.9}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;padding:12px 22px;font:700 16px var(--head);background:var(--accent);color:var(--on-accent);text-decoration:none;border:2px solid var(--accent)}
+.btn.alt{background:transparent;color:var(--accent)}
+
+/* index */
+section{position:relative}
+.sec{padding:96px 0}
+.sec h2{font-size:clamp(2rem,5vw,3.4rem);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 32px}
+.chip{font:500 15px var(--head);padding:7px 14px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;border-radius:99px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.card{display:block;background:var(--card);color:var(--ink);text-decoration:none;border:1px solid var(--line)}
+.card .pic{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);color:var(--accent);background:var(--paper)}
+.card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.card:hover .pic img,.card:hover .pic svg{transform:scale(1.05)}
+.card .pic svg{transition:transform .35s}
+.card div.t{padding:16px 18px 20px}
+.card h3{font-size:1.35rem;margin-bottom:6px}
+.card small{display:block;color:var(--mute);font-size:.95rem;line-height:1.4}
+.card[hidden]{display:none}
+
+/* projects */
+.proj{border-top:1px solid var(--line);padding:96px 0 80px;overflow:visible}
+.proj h2{font-size:clamp(2.2rem,6vw,4.4rem);font-weight:800;max-width:16ch}
+.proj .lede{font-size:1.3rem;margin-top:20px}
+.tb{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border:1.5px solid var(--ink);margin:32px 0;background:var(--card)}
+.tb div{padding:10px 14px;border-right:1px solid var(--line)}
+.tb div:last-child{border-right:0}
+.tb span{display:block;font:500 13px var(--head);color:var(--mute)}
+.tb strong{font:700 16px/1.3 var(--head)}
+.tb .sk{grid-column:span 2}
+@media(max-width:760px){.tb .sk{grid-column:auto}}
+.vis{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:0 0 48px;position:relative;z-index:1}
+.vis figure{margin:0;background:var(--card);border:1px solid var(--line)}
+.vis figure:first-child{grid-column:1/-1}
+.vis .im{aspect-ratio:16/9;color:var(--accent);overflow:hidden}
+.vis figure:first-child .im{aspect-ratio:21/9}
+.vis img{width:100%;height:100%;object-fit:cover}
+.vis iframe,.vis video{width:100%;height:100%;border:0;display:block;background:#000}
+.vis .im:has(.yt),.vis .im:has(iframe),.vis .im:has(video){aspect-ratio:16/9!important}
+.yt{position:relative;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:var(--paper);color:var(--accent)}
+.yt svg{position:absolute;inset:0}
+.yt i{position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;background:var(--accent);border-radius:50%}
+.yt i::after{content:"";position:absolute;left:29px;top:22px;border-left:22px solid var(--on-accent);border-top:14px solid transparent;border-bottom:14px solid transparent}
+.vis figcaption{padding:10px 14px;font-size:.95rem;color:var(--mute)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;position:relative;z-index:1}
+.cols h3{font-size:1.3rem;margin:0 0 10px}
+.cols ul{padding-left:1.1em;margin:0 0 1.6em}
+.cols li{margin-bottom:.3em}
+details{border-top:1px solid var(--line);padding:14px 0}
+summary{font:700 1.1rem var(--head);cursor:pointer}
+.proj .fg{right:-60px;top:80px;width:260px;height:260px;opacity:.5}
+.proj:nth-of-type(even) .fg{right:auto;left:-80px}
+.top{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;font:700 14px var(--head);padding:10px 14px;background:var(--ink);color:var(--paper);border:0;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}
+.top.show{opacity:1;pointer-events:auto}
+footer{padding:80px 0 60px;border-top:1px solid var(--line)}
+footer a{font:700 clamp(1.4rem,4vw,2.4rem) var(--head);word-break:break-all}
+@media(max-width:760px){.cols{grid-template-columns:1fr;gap:0}.vis{grid-template-columns:1fr}.hero .fg{opacity:.45}nav b{display:none}.nav ul{margin:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.layer{transform:none!important}}
+</style>
+</head>
+<body>
+<nav aria-label="Sections"><div class="wrap"><b id="navname"></b><ul id="navlinks"></ul></div></nav>
+<main id="app"></main>
+<button class="top" id="top" aria-label="Back to the project index">Back to projects</button>
+
+<script>
+/* ============================================================
+   EDIT HERE – this is the only part you need to change.
+   • bg / fg: optional image for the back and front parallax layers
+     (leave "" for the built-in drawing). Use a data: URI or a URL.
+   • visuals: first one is shown large. Leave src "" for a placeholder.
+     For video, use youtube: "https://youtu.be/XXXXXXXXXXX" (plays inside the page)
+     or video: "videos/demo.mp4" instead of src.
+   • To add a project, copy one block into the projects list.
+   ============================================================ */
+const SITE = {
+  name: "Wilson Wedel",
+  role: "Student mechanical engineer",
+  statement: "I’m a third-year mechanical engineering student who is eager to work in actuation. I find it deeply rewarding to watch a system grow from an idea into something tangible, and I want to keep developing my skills and learn everything I can to become a better engineer. I bring strong hands-on actuator experience in design, prototyping and machining, along with 3D printing, problem-solving and teamwork. I’m motivated, hardworking and reliable, with solid mechanical aptitude and good working relationships.",
+  bg: "", fg: "",
+  resume: "",                       // link to your résumé PDF, or ""
+  email: "you@example.com",
+  about: "Write two or three sentences: where you studied, what you have built, and what you want to work on next. Keep it short; the projects do the talking.",
+  projects: [
+    {
+      id: "actuator",
+      navLabel: "Actuator",
+      title: "Planetary-capstan actuator for an autonomous wildfire robot",
+      outcome: "This actuator features a 36:1 two-stage planetary gearbox that drives a capstan, allowing the multimodal quadruped to navigate tough terrain to complete cold-trailing tasks. Each actuator will be able to supply 50Nm of torque allowing it to lift itself over obstacles with ease.",
+      role: "Planetary gearbox designer", time: "Add dates",
+      skills: ["Planetary gearbox design", "SolidWorks and Onshape", "GD&T and tolerance stack-up", "Motion studies and simple FEA", "Bearing and fastener selection", "Lathe, mill, CNC and waterjet machining", "3D printing and prototyping", "Design for manufacturing", "Cost and weight optimization"],
+      contribution: ["Researched cycloidal and flex-spline designs before settling on a planetary gearbox", "Designed the 36:1 two-stage planetary gearbox that drives the capstan", "Ran CAD motion studies, tolerance stack-up analysis and simple FEA", "Selected bearings, fasteners, couplers, encoders, lubrication and materials, and built the bill of materials", "Calculated gear ratios, shear, torsion, bolt preload, bearing capacity and peak vs. continuous loading", "Built and tested 3D-printed prototypes, iterating on the design for manufacturing", "Worked with other teams on integration, and secured sponsorships and purchased parts"],
+      motivation: "The actuator had to supply enough torque to lift the robot over obstacles while staying within limits on cost, weight and axial space.",
+      results: "Each actuator is designed to supply 50 Nm of torque. Add your own test results (torque, backlash, vibration) here when you have them.",
+      details: "Add the design process, materials, tolerances and anything else a curious engineer would want to see. Most readers will skip this, so keep it in this collapsed section.",
+      bg: "", fg: "",
+      visuals: [
+        {src: "", caption: "Add a caption for your main image"},
+        {src: "", caption: "Add a caption"},
+        {src: "", caption: "Add a caption"}
+      ]
+    },
+    {
+      id: "vending",
+      navLabel: "Vending machine",
+      title: "Vending machine built from scratch for under $100",
+      outcome: "A working vending machine that I designed and built from scratch for under $100, from the coin separator and locks to the Arduino wiring, code and transaction interface.",
+      role: "Designer and builder", time: "Add dates",
+      skills: ["Mechanical design", "Arduino and sensors", "Programming", "User interface design", "Systems integration", "Prototyping", "Budget design"],
+      contribution: ["Designed the mechanical systems from scratch: coin separators, maintenance rails, locks and storage", "Designed a coil actuator driven by a servo and coil drive", "Wired the electronics using an Arduino microcontroller and sensors", "Wrote the code and integrated the mechanical, electrical and software systems", "Developed a user interface to complete transactions", "Built working prototypes and the final product"],
+      motivation: "The goal was a complete machine that works from end to end for under $100.",
+      results: "Total cost: under $100. Add your exact figure and how well it works here.",
+      details: "Add the design process, materials, tolerances and anything else a curious engineer would want to see. Most readers will skip this, so keep it in this collapsed section.",
+      bg: "", fg: "",
+      visuals: [
+        {src: "", caption: "Add a caption for your main image"},
+        {src: "", caption: "Add a caption"},
+        {src: "", caption: "Add a caption"}
+      ]
+    },
+    {
+      id: "barbot",
+      navLabel: "Bar-Bot",
+      title: "Bar-Bot: a portable drink station that comes to you",
+      outcome: "Bar-Bot is a portable drink station that comes to you. Replace this with one sentence on how it works and what it can do.",
+      role: "Add your role", time: "Add dates",
+      skills: ["Design", "Prototyping"],
+      contribution: ["Add what you designed", "Add what you built", "Add what you tested"],
+      motivation: "Add why you built it and the problem it solves.",
+      results: "Add your results and what you would improve next.",
+      details: "Add the design process, materials, tolerances and anything else a curious engineer would want to see. Most readers will skip this, so keep it in this collapsed section.",
+      bg: "", fg: "",
+      visuals: [
+        {src: "", caption: "Add a caption for your main image"},
+        {src: "", caption: "Add a caption"},
+        {src: "", caption: "Add a caption"}
+      ]
+    }
+  ]
+};
+/* ============================================================ */
+
+const $ = (s, r = document) => r.querySelector(s);
+const art = n => {
+  let g = "";
+  for (let i = 1; i <= 6; i++) g += `<circle cx="${300 + n * 30}" cy="220" r="${i * 32 + n * 5}"/>`;
+  for (let i = 0; i < 20; i++) { const a = i * Math.PI / 10, c = Math.cos(a), s = Math.sin(a);
+    g += `<path d="M${300 + n * 30 + c * 150} ${220 + s * 150}L${300 + n * 30 + c * 178} ${220 + s * 178}"/>`; }
+  g += `<path d="M0 ${330 - n * 25}H600M${90 + n * 40} 0V440" stroke-dasharray="6 6"/>`;
+  return `<svg viewBox="0 0 600 440" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">${g}</svg>`;
+};
+const pic = (src, n, alt = "") => src ? `<img src="${src}" alt="${alt}" loading="lazy">` : art(n);
+
+const ytId = u => (String(u).match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/) || [])[1];
+const media = (v, n) => {
+  const id = v.youtube && ytId(v.youtube);
+  if (id) return `<button class="yt" data-yt="${id}" aria-label="Play video: ${v.caption}">${art(n)}<i></i></button>`;
+  if (v.video) return `<video src="${v.video}" controls playsinline preload="metadata"></video>`;
+  return pic(v.src, n, v.caption);
+};
+
+const P = SITE.projects;
+const skills = [...new Set(P.flatMap(p => p.skills))];
+$("#navname").textContent = SITE.name;
+document.title = SITE.name + " – Engineering portfolio";
+
+const nav = [["top", "Home"], ["projects", "Projects"], ...P.map(p => [p.id, p.navLabel || p.title.split(" ").slice(0, 2).join(" ")]), ["contact", "Contact"]];
+$("#navlinks").innerHTML = nav.map(([id, t]) => `<li><a href="#${id}" data-go="${id}">${t}</a></li>`).join("");
+
+$("#app").innerHTML = `
+<section class="hero" id="top-section">
+  <div class="clip"><div class="layer bg" data-speed="0.18">${pic(SITE.bg, 1)}</div></div>
+  <div class="wrap">
+    <h1>${SITE.name}</h1>
+    <p class="role">${SITE.role}</p>
+    <p>${SITE.statement}</p>
+    <div class="btns"><a class="btn" href="#projects" data-go="projects">See projects</a>${SITE.resume ? `<a class="btn alt" href="${SITE.resume}">Résumé</a>` : ""}<a class="btn alt" href="#contact" data-go="contact">Contact</a></div>
+  </div>
+  <div class="layer fg" data-speed="-0.22" style="position:absolute">${pic(SITE.fg, 3)}</div>
+</section>
+
+<section class="sec" id="projects"><div class="wrap">
+  <h2>Projects</h2>
+  <p style="margin-bottom:32px">Open a project to jump straight to it.</p>
+  
+  <div class="cards">${P.map((p, i) => `<a class="card" href="#${p.id}" data-go="${p.id}" data-skills="${p.skills.join("|")}"><div class="pic">${pic(p.visuals[0]?.src, i + 1)}</div><div class="t"><h3>${p.title}</h3><small>${p.skills.slice(0, 4).join(", ")}</small></div></a>`).join("")}</div>
+</div></section>
+
+${P.map((p, i) => `
+<section class="proj" id="${p.id}">
+  <div class="clip"><div class="layer bg" data-speed="0.12">${pic(p.bg, i + 2)}</div></div>
+  <div class="layer fg" data-speed="-0.15">${pic(p.fg, i + 4)}</div>
+  <div class="wrap">
+    <h2>${p.title}</h2>
+    <p class="lede">${p.outcome}</p>
+    <div class="tb"><div><span>Role</span><strong>${p.role}</strong></div><div><span>When</span><strong>${p.time}</strong></div><div class="sk"><span>Skills</span><strong>${p.skills.join(", ")}</strong></div></div>
+    <div class="vis">${p.visuals.map((v, j) => `<figure><div class="im">${media(v, i + j + 1)}</div><figcaption>${v.caption}</figcaption></figure>`).join("")}</div>
+    <div class="cols">
+      <div><h3>What I did</h3><ul>${p.contribution.map(c => `<li>${c}</li>`).join("")}</ul><h3>Why it mattered</h3><p>${p.motivation}</p></div>
+      <div><h3>Result</h3><p>${p.results}</p><details><summary>Technical details</summary><p>${p.details}</p></details></div>
+    </div>
+  </div>
+</section>`).join("")}
+
+<section class="sec" id="about"><div class="wrap"><h2>About</h2><p>${SITE.about}</p></div></section>
+<footer id="contact"><div class="wrap"><p>Want to talk about a project or a role?</p><a href="mailto:${SITE.email}">${SITE.email}</a></div></footer>`;
+
+/* navigation: click a link or card, scroll to that section */
+const go = id => { const el = document.getElementById(id === "top" ? "top-section" : id); if (el) el.scrollIntoView(); };
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-go]"); if (!a) return;
+  e.preventDefault(); go(a.dataset.go);
+});
+if (location.hash.length > 1) setTimeout(() => go(location.hash.slice(1)), 150);
+
+/* YouTube: load the player only when someone presses play */
+document.addEventListener("click", e => {
+  const b = e.target.closest(".yt"); if (!b) return;
+  b.parentElement.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.yt}?autoplay=1&rel=0" title="Project video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+});
+
+
+
+/* parallax: layers drift at different speeds */
+const layers = [...document.querySelectorAll("[data-speed]")];
+const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let tick = false;
+function update() {
+  tick = false;
+  const vh = innerHeight;
+  if (!still) layers.forEach(l => {
+    const r = l.parentElement.getBoundingClientRect();
+    if (r.bottom < -300 || r.top > vh + 300) return;
+    l.style.transform = `translate3d(0,${(-(r.top + r.height / 2 - vh / 2) * l.dataset.speed).toFixed(1)}px,0)`;
+  });
+  $("#top").classList.toggle("show", scrollY > innerHeight);
+  let cur = "";
+  nav.forEach(([id]) => { const el = document.getElementById(id === "top" ? "top-section" : id); if (el && el.getBoundingClientRect().top < vh * 0.4) cur = id; });
+  document.querySelectorAll("nav a").forEach(a => a.classList.toggle("on", a.dataset.go === cur));
+}
+addEventListener("scroll", () => { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
+addEventListener("resize", update);
+$("#top").onclick = () => go("projects");
+update();
+</script>
+</body>
+</html>
