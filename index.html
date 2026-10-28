@@ -141,11 +141,12 @@ const SITE = {
     {
       id: "actuator",
       navLabel: "Actuator",
+      thumb: "images/gb-var4-full.png",
       title: "Planetary-capstan actuator for an autonomous wildfire robot",
       outcome: "This actuator features a 36:1 two-stage planetary gearbox that drives a capstan, allowing the multimodal quadruped to navigate tough terrain to complete cold-trailing tasks. Each actuator will be able to supply 50Nm of torque allowing it to lift itself over obstacles with ease.",
-      role: "Planetary gearbox designer", time: "Add dates",
+      role: "Planetary Gearbox Designer, Actuation Lead", time: "Add dates",
       skills: ["Planetary gearbox design", "SolidWorks and Onshape", "GD&T and tolerance stack-up", "Motion studies and simple FEA", "Bearing and part selection", "Lathe, mill, CNC and waterjet machining", "3D printing and prototyping", "Design for manufacturing", "Cost and weight optimization"],
-      contribution: ["Researched cycloidal and flex-spline designs before settling on a planetary gearbox", "Designed the 36:1 two-stage planetary gearbox that drives the capstan", "Ran CAD motion studies, tolerance stack-up analysis and simple FEA", "Selected bearings, fasteners, couplers, encoders, lubrication and materials, and built the bill of materials", "Calculated gear ratios, shear, torsion, bolt preload, bearing capacity and peak vs. continuous loading", "Built and tested 3D-printed prototypes, iterating on the design for manufacturing", "Worked with other teams on integration, and secured sponsorships and purchased parts"],
+      contribution: ["Researched cycloidal and flex-spline designs before settling on a planetary gearbox", "Designed the 36:1 two-stage planetary gearbox that drives the capstan", "Ran CAD motion studies, tolerance stack-up analysis and simple FEA", "Selected bearings, fasteners, couplers, encoders, lubrication and materials, and built the bill of materials", "Calculated gear ratios, shear, torsion, bolt preload, bearing capacity and peak vs. continuous loading", "Built and tested 3D-printed prototypes, iterating on the design for manufacturing", "Built and tested fully machined prototypes", "Designed and built test capstan, capstan coupling" "Worked with other teams on integration, and secured sponsorships and purchased parts"],
       motivation: "The actuator had to supply enough torque to lift the robot over obstacles while staying within limits on cost, weight and axial space.",
       results: "Each actuator is designed to supply 50 Nm of torque with minimal backlash and vibration. I am currently designing the test apparatuses (torque, backlash, vibration). After testing, I will display the results here. Currently, the actuator achieves full spin-up and actuation and meets the design requirements for integration, weight, and cost.",
       details: "An iterative design process was used, constantly improving the design as I learned more. However, all general requirements were determined by limiting factors such as commercially available gears, space, and weight. Current materials are 1045 steel, 6061-T6 aluminum, and PA6-CF carbon-fiber-reinforced filament. In the current bearing arrangement, the small stage-to-stage bearing is the locating bearing and the larger stage-to-casing bearing is the non-locating bearing, likely with an H7/g6 fit. The planet bearings are needle roller bearings that use the ground pins and the reamed planet gear bores as the races. The sun-gear key is a 1018-1045 steel hybrid designed to fail before the shaft and gear.",
@@ -175,6 +176,7 @@ const SITE = {
     {
       id: "vending",
       navLabel: "Vending machine",
+      thumb: "",
       title: "Vending machine built from scratch for under $100",
       outcome: "A working vending machine that I designed and built from scratch for under $100, from the coin separator and locks to the Arduino wiring, code and transaction interface.",
       role: "Designer and builder", time: "Add dates",
@@ -202,6 +204,7 @@ const SITE = {
     {
       id: "barbot",
       navLabel: "Bar-Bot",
+      thumb: "",
       title: "Bar-Bot: a portable drink station that comes to you",
       outcome: "Bar-Bot is a portable drink station that comes to you. Replace this with one sentence on how it works and what it can do.",
       role: "Add your role", time: "Add dates",
@@ -265,7 +268,7 @@ $("#app").innerHTML = `
   <h2>Projects</h2>
   <p style="margin-bottom:32px">Open a project to jump straight to it.</p>
   
-  <div class="cards">${P.map((p, i) => `<a class="card" href="#${p.id}" data-go="${p.id}" data-skills="${p.skills.join("|")}"><div class="pic">${pic(p.visuals[0]?.src, i + 1)}</div><div class="t"><h3>${p.title}</h3><small>${p.skills.slice(0, 4).join(", ")}</small></div></a>`).join("")}</div>
+  <div class="cards">${P.map((p, i) => `<a class="card" href="#${p.id}" data-go="${p.id}" data-skills="${p.skills.join("|")}"><div class="pic">${pic(p.thumb || p.visuals[0]?.src, i + 1)}</div><div class="t"><h3>${p.title}</h3><small>${p.skills.slice(0, 4).join(", ")}</small></div></a>`).join("")}</div>
 </div></section>
 
 ${P.map((p, i) => `
