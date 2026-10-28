@@ -82,19 +82,21 @@ section{position:relative}
 .tb strong{font:700 16px/1.3 var(--head)}
 .tb .sk{grid-column:span 2}
 @media(max-width:760px){.tb .sk{grid-column:auto}}
-.vis{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:0 0 48px;position:relative;z-index:1}
-.vis figure{margin:0;background:var(--card);border:1px solid var(--line)}
+.vis{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 16px;align-items:start;margin:0 0 48px;position:relative;z-index:1}
+.vis figure{margin:0;background:none;border:0;position:relative}
 .vis figure:first-child{grid-column:1/-1}
-.vis .im{aspect-ratio:16/9;color:var(--accent);overflow:hidden}
-.vis figure:first-child .im{aspect-ratio:21/9}
-.vis img{width:100%;height:100%;object-fit:cover}
+.vis .im{color:var(--accent);overflow:hidden;border:1px solid var(--line)}
+.vis .im:has(svg){aspect-ratio:16/9}
+.vis img{width:100%;height:auto;display:block}
 .vis iframe,.vis video{width:100%;height:100%;border:0;display:block;background:#000}
 .vis .im:has(.yt),.vis .im:has(iframe),.vis .im:has(video){aspect-ratio:16/9!important}
 .yt{position:relative;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:var(--paper);color:var(--accent)}
 .yt svg{position:absolute;inset:0}
 .yt i{position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;background:var(--accent);border-radius:50%}
 .yt i::after{content:"";position:absolute;left:29px;top:22px;border-left:22px solid var(--on-accent);border-top:14px solid transparent;border-bottom:14px solid transparent}
-.vis figcaption{padding:10px 14px;font-size:.95rem;color:var(--mute)}
+.vis figcaption{position:absolute;left:1px;right:1px;bottom:1px;padding:36px 14px 12px;font-size:.95rem;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,0));text-shadow:0 1px 3px rgba(0,0,0,.6);pointer-events:none}
+.vis figure:has(iframe) figcaption,.vis figure:has(video) figcaption{display:none}
+.vis figcaption:empty{display:none}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;position:relative;z-index:1}
 .cols h3{font-size:1.3rem;margin:0 0 10px}
 .cols ul{padding-left:1.1em;margin:0 0 1.6em}
