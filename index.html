@@ -136,7 +136,7 @@ const SITE = {
   photo: "images/wilson.png",
   resume: "",                       // link to your résumé PDF, or ""
   email: "wilsonwedel2023@gmail.com",
-  about: "I am a student at UBC and am VP Mechanical for a engineering design club called Heat Robotics",
+  about: "I am a student at UBC and Vice President Mechanical for a engineering design club called Heat Robotics",
   projects: [
     {
       id: "actuator",
@@ -292,7 +292,11 @@ ${P.map((p, i) => `
 <footer id="contact"><div class="wrap"><p>Want to talk about a project or a role?</p><a href="mailto:${SITE.email}">${SITE.email}</a></div></footer>`;
 
 /* navigation: click a link or card, scroll to that section */
-const go = id => { const el = document.getElementById(id === "top" ? "top-section" : id); if (el) el.scrollIntoView(); };
+const go = id => {
+  const el = document.getElementById(id === "top" ? "top-section" : id); if (!el) return;
+  el.scrollIntoView();
+  setTimeout(() => el.scrollIntoView(), 900);
+};
 document.addEventListener("click", e => {
   const a = e.target.closest("[data-go]"); if (!a) return;
   e.preventDefault(); go(a.dataset.go);
